@@ -213,7 +213,6 @@ set_stage("%(bcb_dev)s", "3/3");
 reboot_now("%(bcb_dev)s", "recovery");
 else if get_stage("%(bcb_dev)s") == "3/3" then
 """ % bcb_dev)
-
     # Stage 3/3: Make changes.
     script.Comment("Stage 3/3")
 
@@ -226,30 +225,32 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
   device = target_info.GetBuildProp("ro.product.device")
 
-  script.Print("=================================================");
-  script.Print("");
-  script.Print("                     ''                  ");
-  script.Print("               `````.oy.```````          ");
-  script.Print("            ```````:dMMh.````````        ");
-  script.Print("          ```````.sMMMMMy.`````````      ");
-  script.Print("        ```````./mMMMMMMMy.``````````    ");
-  script.Print("       ```````-yMMMMMMMMMMy.``````````   ");
-  script.Print("       `````./mMMNNNMMMMMMMy.``````````  ");
-  script.Print("      `````-ymmhMMMMMMhNMMMMs.`````````  ");
-  script.Print("      ````./M..```````.-odMMMs.````````  ");
-  script.Print("      ```````````````````./hMMs.```````  ");
-  script.Print("       ````````````````````./dMs.``````  ");
-  script.Print("        ``````````````````````.+ms`````  ");
-  script.Print("         ```````````````````````-yo```   ");
-  script.Print("          ``````````````````````...d`    ");
-  script.Print("            ````````````````````` `` .   ");
-  script.Print("               ````````````````          ");
-  script.Print("");
-  script.Print("                    ArrowOS");
-  script.Print("");
-  script.Print("=================================================");
+  script.Print("=============================================");
+  script.Print(" ");
+  script.Print("                       .=++++++++++++++++-  ");
+  script.Print("                     -*+:               .*= ");
+  script.Print("                  .=*=.                  *= ");
+  script.Print("                -*+:                     *= ");
+  script.Print("             .=*=.                       *= ");
+  script.Print("           -*+:                          *= ");
+  script.Print("         =*=.                            *= ");
+  script.Print("        -#.                              *= ");
+  script.Print("         +*=============================*+. ");
+  script.Print(" ");
+  script.Print(" ");
+  script.Print("   .-==============================:        ");
+  script.Print("  -#                              -#-       ");
+  script.Print("  -#                           .=*=         ");
+  script.Print("  -#                         -++-           ");
+  script.Print("  -#                      .=*=.             ");
+  script.Print("  -#                    -*+-                ");
+  script.Print("  -#                 .=*=                   ");
+  script.Print("  .*+===============*+.                     ");
+  script.Print(" ");
+  script.Print("                    SwipOS");
+  script.Print(" ");
+  script.Print("==============================================");
   script.Print(" Android version  : %s"%(android_version));
-  script.Print(" Build id         : %s"%(build_id));
   script.Print(" Build date       : %s"%(build_date));
   script.Print(" Security patch   : %s"%(security_patch));
   script.Print(" Device           : %s"%(device));

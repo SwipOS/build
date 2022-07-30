@@ -5412,7 +5412,7 @@ INTERNAL_OTA_METADATA := $(PRODUCT_OUT)/ota_metadata
 ifeq ($(TARGET_BUILD_VARIANT),user)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
 else
-ifneq ($(ARROW_BUILD),)
+ifneq ($(SWIP_BUILD),)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := true
 else
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
@@ -5425,37 +5425,41 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(OTA_FROM_TARGET_
 	@echo "Package OTA: $@"
 	$(call build-ota-package-target,$@,-k $(KEY_CERT_PAIR) --output_metadata_path $(INTERNAL_OTA_METADATA))
 
-ARROW_TARGET_PACKAGE := $(PRODUCT_OUT)/$(ARROW_VERSION).zip
+SWIP_TARGET_PACKAGE := $(PRODUCT_OUT)/$(SWIP_VERSION).zip
 
 .PHONY: otapackage bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(ARROW_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(ARROW_TARGET_PACKAGE) > $(ARROW_TARGET_PACKAGE).md5sum
-	echo -e "========================================="
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(SWIP_TARGET_PACKAGE)
+	$(hide) $(MD5SUM) $(SWIP_TARGET_PACKAGE) > $(SWIP_TARGET_PACKAGE).md5sum
+	  echo -e"============================================="
+	  echo -e""
+	  echo -e"                       .=++++++++++++++++-  "
+	  echo -e"                     -*+:               .*= "
+	  echo -e"                  .=*=.                  *= "
+	  echo -e"                -*+:                     *= "
+	  echo -e"             .=*=.                       *= "
+	  echo -e"           -*+:                          *= "
+	  echo -e"         =*=.                            *= "
+	  echo -e"        -#.                              *= "
+	  echo -e"         +*=============================*+. "
+	  echo -e""
+	  echo -e""
+	  echo -e"   .-==============================:        "
+	  echo -e"  -#                              -#-       "
+	  echo -e"  -#                           .=*=         "
+	  echo -e"  -#                         -++-           "
+	  echo -e"  -#                      .=*=.             "
+	  echo -e"  -#                    -*+-                "
+	  echo -e"  -#                 .=*=                   "
+	  echo -e"  .*+===============*+.                     "
+	  echo -e""
+	  echo -e"                   SwipOS"
+	  echo -e""
+	  echo -e"=============================================="
+
 	echo -e ""
-	echo -e "                 \033[1;34m''\033[0m                  "
-	echo -e "           \`\`\`\`\`\033[1;34m.oy.\033[0m\`\`\`\`\`\`\`          "
-	echo -e "        \`\`\`\`\`\`\`\033[1;34m:dMMh.\033[0m\`\`\`\`\`\`\`\`        "
-	echo -e "      \`\`\`\`\`\`\`\033[1;34m.sMMMMMy.\033[0m\`\`\`\`\`\`\`\`\`      "
-	echo -e "    \`\`\`\`\`\`\`\033[1;34m./mMMMMMMMy.\033[0m\`\`\`\`\`\`\`\`\`\`    "
-	echo -e "   \`\`\`\`\`\`\`\033[1;34m-yMMMMMMMMMMy.\033[0m\`\`\`\`\`\`\`\`\`\`   "
-	echo -e "   \`\`\`\`\`\033[1;34m./mMMNNNMMMMMMMy.\033[0m\`\`\`\`\`\`\`\`\`\`  "
-	echo -e "  \`\`\`\`\`\033[1;34m-ymmhMMMMMMhNMMMMs.\033[0m\`\`\`\`\`\`\`\`\`  "
-	echo -e "  \`\`\`\`\033[1;34m./M..\033[0m\`\`\`\`\`\`\`\033[1;34m.-odMMMs.\033[0m\`\`\`\`\`\`\`\`  "
-	echo -e "  \`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\033[1;34m./hMMs.\033[0m\`\`\`\`\`\`\`  "
-	echo -e "   \`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\033[1;34m./dMs.\033[0m\`\`\`\`\`\`  "
-	echo -e "    \`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\033[1;34m.+ms\033[0m\`\`\`\`\`  "
-	echo -e "     \`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\033[1;34m-yo\033[0m\`\`\`   "
-	echo -e "      \`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\033[1;34m...d\033[0m\`    "
-	echo -e "        \`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\` \`\` \033[1;34m.   \033[0m"
-	echo -e "           \`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`          "
-	echo -e ""
-	echo -e "                ArrowOS"
-	echo -e ""
-	echo -e "========================================="
-	echo -e ""
-	@echo "**Package complete"**: $(ARROW_TARGET_PACKAGE)"
+	@echo "**Package complete"**: $(SWIP_TARGET_PACKAGE)"
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)
 name := $(product_name)-ota-retrofit-$(FILE_NAME_TAG)
